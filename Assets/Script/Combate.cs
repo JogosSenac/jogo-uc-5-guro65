@@ -12,6 +12,8 @@ public class Combate : MonoBehaviour
     public BoxCollider2D localCartas;
     public GameObject cartaAtivaPlayer;
     public GameObject cartaAtivaOponente;
+    public GameObject textoBotao;
+    public GameObject botaoTurno;
     private int vez;
     public bool aguardaVez = true;
     public float tempoTurno;
@@ -39,6 +41,10 @@ public class Combate : MonoBehaviour
             VezDoOponente();
             StartCoroutine("ContadorTurno");
         }
+        else if(vez == 3 && aguardaVez)
+        {
+            FimdoTurno();
+        }
     }
 
     private void VezDoPlayer()
@@ -57,6 +63,14 @@ public class Combate : MonoBehaviour
         aguardaVez = !aguardaVez;
     }
 
+    private void FimdoTurno()
+    {
+        textoIndicador.text = "Fim do Turno";
+        player.MinhaVez(false);
+        oponente.MinhaVez(false);
+        textoBotao.GetComponent<TextMeshProUGUI>().text = "Aguarde...";
+    }
+
     IEnumerator ContadorTurno()
     {
         yield return new WaitForSeconds(tempoTurno);
@@ -71,15 +85,28 @@ public class Combate : MonoBehaviour
            VerificaCartaAtivaPlayer();
            MudaPosicaoCartaPlayer();
         }
-        else
+        else if(vez == 2)
         {
-            vez--;
+            vez++;
             VerificaCartaAtivaOponente();
             MudaPosicaoCartaOponente();
+        }
+        else if(vez == 3)
+        {
+            vez = 1;
+            FimdoTurno();
+            FinalizaCombate();
         }
 
         aguardaVez = !aguardaVez;
         StopCoroutine("ContadorTurno");
+    }
+
+    private void FinalizaCombate()
+    {
+        cartaAtivaPlayer.GetComponent<Carta>().CalculaDano(
+            cartaAtivaOponente.GetComponent<Carta>().DanoCarta()
+        );
     }
 
     public void VerificaCartaAtivaPlayer()

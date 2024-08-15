@@ -84,4 +84,19 @@ public class Carta : MonoBehaviour
     {
         return ativa;
     }
+
+    public int DanoCarta()
+    {
+        return dano;
+    }
+
+    public void CalculaDano(int danoInimigo)
+    {
+        defesa -= danoInimigo;
+
+        if(defesa <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

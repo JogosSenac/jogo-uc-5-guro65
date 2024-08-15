@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1975133962891221773}
   - component: {fileID: 1393609298161809298}
   m_Layer: 0
-  m_Name: Carta_Iris
-  m_TagString: Carta Oponente
+  m_Name: Carta_iris
+  m_TagString: Carta Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
