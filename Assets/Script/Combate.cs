@@ -74,7 +74,7 @@ public class Combate : MonoBehaviour
     {
         textoIndicador.text = "Sua vez!";
         textoBotao.GetComponent<TextMeshProUGUI>().text = "Selecione sua carta";
-        aguardaVez = false; // Permite que o jogador faça sua jogada
+        aguardaVez = false;
     }
 
     private void FimdoTurno()
@@ -109,12 +109,12 @@ public class Combate : MonoBehaviour
         {
             vez = 1;
             FinalizaCombate();
-            FimdoTurno(); // Finaliza o turno e prepara para o próximo
+            FimdoTurno();
         }
 
-        aguardaVez = true; // Permite que o próximo turno comece
+        aguardaVez = true;
         textoBotao.GetComponent<TextMeshProUGUI>().text = "Inicie o Turno";
-        cartaOponenteSelecionada = false; // Resetar flag para o próximo turno
+        cartaOponenteSelecionada = false;
     }
     
     private void FinalizaCombate()
@@ -124,27 +124,27 @@ public class Combate : MonoBehaviour
             Carta cartaPlayer = cartaAtivaPlayer.GetComponent<Carta>();
             Carta cartaOponente = cartaAtivaOponente.GetComponent<Carta>();
 
-            // A carta do jogador causa dano à carta do oponente
+            
             cartaOponente.CalculaDano(cartaPlayer.DanoCarta());
 
-            // A carta do oponente causa dano à carta do jogador
+            
             cartaPlayer.CalculaDano(cartaOponente.DanoCarta());
 
-            // Verifica se a carta do jogador foi destruída
+            
             if (cartaPlayer.defesa <= 0)
             {
                 Destroy(cartaAtivaPlayer);
                 cartaAtivaPlayer = null;
             }
 
-            // Verifica se a carta do oponente foi destruída
+            
             if (cartaOponente.defesa <= 0)
             {
                 Destroy(cartaAtivaOponente);
                 cartaAtivaOponente = null;
             }
 
-            // Atualiza o texto se uma carta foi destruída
+            
             if (cartaAtivaPlayer == null || cartaAtivaOponente == null)
             {
                 textoIndicador.text = "Carta destruída, jogue uma nova.";
@@ -167,7 +167,7 @@ public class Combate : MonoBehaviour
     public void VerificaCartaAtivaPlayer()
     {
         List<GameObject> deckPlayer = player.DeckNaTela();
-        cartaAtivaPlayer = null; // Resetar carta ativa
+        cartaAtivaPlayer = null;
         foreach (GameObject carta in deckPlayer)
         {
             if (carta != null)
@@ -176,8 +176,8 @@ public class Combate : MonoBehaviour
                 if (cartaAtual != null && cartaAtual.CartaClicada())
                 {
                     cartaAtivaPlayer = carta;
-                    cartaAtual.DesativaCarta(); // Desativa a carta após seleção
-                    break; // Encontrou a carta clicada, pode parar a busca
+                    cartaAtual.DesativaCarta();
+                    break;
                 }
             }
         }

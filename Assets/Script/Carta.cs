@@ -25,7 +25,7 @@ public class Carta : MonoBehaviour
 
     private void Update()
     {
-        // Atualize a lógica de jogo se necessário
+    
     }
 
     public void AtivaCarta()
@@ -42,7 +42,7 @@ public class Carta : MonoBehaviour
     {
         if (ativa)
         {
-            transform.localScale = new Vector3(0.15f, 0.15f, 1); // Ajustar o Z para 1
+            transform.localScale = new Vector3(0.15f, 0.15f, 1);
             sprite.sortingOrder = 1;
         }
     }
@@ -60,7 +60,7 @@ public class Carta : MonoBehaviour
     {
         if (ativa)
         {
-            clicada = !clicada; // Alterna o estado de clicada
+            clicada = !clicada;
             transform.localScale = clicada ? new Vector3(0.15f, 0.15f, 1) : scalaInicial;
             sprite.sortingOrder = clicada ? 1 : 0;
         }
