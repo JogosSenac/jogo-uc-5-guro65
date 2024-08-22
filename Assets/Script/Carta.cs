@@ -12,21 +12,20 @@ public class Carta : MonoBehaviour
     public bool clicada = false;
     public SpriteRenderer sprite;
 
-    // Start is called before the first frame update
     private void Awake() 
     {
         ativa = true;
         sprite = GetComponent<SpriteRenderer>();
     }
-    void Start()
+
+    private void Start()
     {
         scalaInicial = transform.localScale;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        // Atualize a lógica de jogo se necessário
     }
 
     public void AtivaCarta()
@@ -41,37 +40,29 @@ public class Carta : MonoBehaviour
     
     private void OnMouseOver() 
     {
-        if(ativa)
+        if (ativa)
         {
-            transform.localScale = new Vector3(0.15f, 0.15f, 0);
+            transform.localScale = new Vector3(0.15f, 0.15f, 1); // Ajustar o Z para 1
             sprite.sortingOrder = 1;
         }
-        
     }
 
     private void OnMouseExit() 
     {
-        if(ativa && !clicada) 
+        if (ativa && !clicada) 
         {
             transform.localScale = scalaInicial;
             sprite.sortingOrder = 0;
         }
-        
     }
 
     private void OnMouseDown() 
     {
-        if(ativa && !clicada)
+        if (ativa)
         {
-            clicada = true;
-            transform.localScale = new Vector3(0.15f, 0.15f, 0);
-            sprite.sortingOrder = 1;
-        }
-        else if(ativa && clicada)
-        {
-            clicada = false;
-            transform.localScale = scalaInicial;
-            sprite.sortingOrder = 0;
+            clicada = !clicada; // Alterna o estado de clicada
+            transform.localScale = clicada ? new Vector3(0.15f, 0.15f, 1) : scalaInicial;
+            sprite.sortingOrder = clicada ? 1 : 0;
         }
     }
 
@@ -96,7 +87,7 @@ public class Carta : MonoBehaviour
 
         if(defesa <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

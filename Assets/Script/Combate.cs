@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Combate : MonoBehaviour
 {
@@ -10,14 +9,14 @@ public class Combate : MonoBehaviour
     public Player oponente;
     public TextMeshProUGUI textoIndicador;
     public BoxCollider2D localCartas;
-    public GameObject cartaAtivaPlayer;
-    public GameObject cartaAtivaOponente;
     public GameObject textoBotao;
-    public GameObject botaoTurno;
+    private GameObject cartaAtivaPlayer;
+    private GameObject cartaAtivaOponente;
     private int vez;
     public bool aguardaVez = true;
     public float tempoTurno;
-     
+    private bool cartaOponenteSelecionada = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,49 +25,63 @@ public class Combate : MonoBehaviour
         textoIndicador = GameObject.FindWithTag("Indicador").GetComponent<TextMeshProUGUI>();
         localCartas = GameObject.FindWithTag("Local").GetComponent<BoxCollider2D>();
         vez = 1;
+        textoBotao.GetComponent<TextMeshProUGUI>().text = "Inicie o Turno";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(vez == 1 && aguardaVez)
+        if (aguardaVez)
         {
-            VezDoPlayer();
-            StartCoroutine("ContadorTurno");
+            if (vez == 1)
+            {
+                VezDoPlayer();
+            }
+            else if (vez == 2 && !cartaOponenteSelecionada)
+            {
+                textoIndicador.text = "Aguarde o oponente jogar";
+                textoBotao.GetComponent<TextMeshProUGUI>().text = "Oponente Jogar";
+            }
+            else if (vez == 3)
+            {
+                FimdoTurno();
+            }
         }
-        else if(vez == 2 && aguardaVez)
+    }
+
+    public void JogarCartaOponente()
+    {
+        if (!cartaOponenteSelecionada && vez == 2)
         {
-            VezDoOponente();
-            StartCoroutine("ContadorTurno");
-        }
-        else if(vez == 3 && aguardaVez)
-        {
-            FimdoTurno();
+            cartaAtivaOponente = EscolherCartaAleatoria(oponente);
+            if (cartaAtivaOponente != null)
+            {
+                cartaOponenteSelecionada = true;
+                MudaPosicaoCartaOponente();
+                StartCoroutine(ContadorTurno());
+            }
+            else
+            {
+                textoIndicador.text = "Nenhuma carta disponível para o oponente.";
+                textoBotao.GetComponent<TextMeshProUGUI>().text = "Inicie o próximo turno";
+                aguardaVez = false;
+                cartaOponenteSelecionada = true; // Evitar a seleção de outra carta do oponente
+            }
         }
     }
 
     private void VezDoPlayer()
     {
         textoIndicador.text = "Sua vez!";
-        player.MinhaVez(true);
-        oponente.MinhaVez(false);
-        aguardaVez = !aguardaVez;
-    }
-
-    private void VezDoOponente()
-    {
-        textoIndicador.text = "Vez do oponente";
-        player.MinhaVez(false);
-        oponente.MinhaVez(true);
-        aguardaVez = !aguardaVez;
+        textoBotao.GetComponent<TextMeshProUGUI>().text = "Selecione sua carta";
+        aguardaVez = false; // Permite que o jogador faça sua jogada
     }
 
     private void FimdoTurno()
     {
         textoIndicador.text = "Fim do Turno";
-        player.MinhaVez(false);
-        oponente.MinhaVez(false);
         textoBotao.GetComponent<TextMeshProUGUI>().text = "Aguarde...";
+        aguardaVez = false;
     }
 
     IEnumerator ContadorTurno()
@@ -78,72 +91,113 @@ public class Combate : MonoBehaviour
     }
 
     public void FinalizarTurno()
-    {   
-        if(vez == 1)
-        {
-           vez++; 
-           VerificaCartaAtivaPlayer();
-           MudaPosicaoCartaPlayer();
-        }
-        else if(vez == 2)
+    {
+        StopCoroutine(ContadorTurno());
+
+        if (vez == 1)
         {
             vez++;
-            VerificaCartaAtivaOponente();
-            MudaPosicaoCartaOponente();
+            VerificaCartaAtivaPlayer();
+            MudaPosicaoCartaPlayer();
         }
-        else if(vez == 3)
+        else if (vez == 2)
+        {
+            vez++;
+            // Carta do oponente já foi selecionada e movida
+        }
+        else if (vez == 3)
         {
             vez = 1;
-            FimdoTurno();
             FinalizaCombate();
+            FimdoTurno(); // Finaliza o turno e prepara para o próximo
         }
 
-        aguardaVez = !aguardaVez;
-        StopCoroutine("ContadorTurno");
+        aguardaVez = true; // Permite que o próximo turno comece
+        textoBotao.GetComponent<TextMeshProUGUI>().text = "Inicie o Turno";
+        cartaOponenteSelecionada = false; // Resetar flag para o próximo turno
     }
-
+    
     private void FinalizaCombate()
     {
-        cartaAtivaPlayer.GetComponent<Carta>().CalculaDano(
-            cartaAtivaOponente.GetComponent<Carta>().DanoCarta()
-        );
+        if (cartaAtivaPlayer != null && cartaAtivaOponente != null)
+        {
+            Carta cartaPlayer = cartaAtivaPlayer.GetComponent<Carta>();
+            Carta cartaOponente = cartaAtivaOponente.GetComponent<Carta>();
+
+            // A carta do jogador causa dano à carta do oponente
+            cartaOponente.CalculaDano(cartaPlayer.DanoCarta());
+
+            // A carta do oponente causa dano à carta do jogador
+            cartaPlayer.CalculaDano(cartaOponente.DanoCarta());
+
+            // Verifica se a carta do jogador foi destruída
+            if (cartaPlayer.defesa <= 0)
+            {
+                Destroy(cartaAtivaPlayer);
+                cartaAtivaPlayer = null;
+            }
+
+            // Verifica se a carta do oponente foi destruída
+            if (cartaOponente.defesa <= 0)
+            {
+                Destroy(cartaAtivaOponente);
+                cartaAtivaOponente = null;
+            }
+
+            // Atualiza o texto se uma carta foi destruída
+            if (cartaAtivaPlayer == null || cartaAtivaOponente == null)
+            {
+                textoIndicador.text = "Carta destruída, jogue uma nova.";
+                textoBotao.GetComponent<TextMeshProUGUI>().text = "Jogar Nova Carta";
+            }
+        }
+    }
+
+    private GameObject EscolherCartaAleatoria(Player jogador)
+    {
+        List<GameObject> deck = jogador.DeckNaTela();
+        if (deck.Count > 0)
+        {
+            int indiceAleatorio = Random.Range(0, deck.Count);
+            return deck[indiceAleatorio];
+        }
+        return null;
     }
 
     public void VerificaCartaAtivaPlayer()
     {
         List<GameObject> deckPlayer = player.DeckNaTela();
-        foreach(GameObject carta in deckPlayer)
+        cartaAtivaPlayer = null; // Resetar carta ativa
+        foreach (GameObject carta in deckPlayer)
         {
-            Carta cartaAtual = carta.GetComponent<Carta>();
-            if(cartaAtual.CartaClicada())
+            if (carta != null)
             {
-                cartaAtivaPlayer = carta;
-            }
-        }
-    }
-
-    public void VerificaCartaAtivaOponente()
-    {
-        List<GameObject> deckOponente = oponente.DeckNaTela();
-        foreach(GameObject carta in deckOponente)
-        {
-            Carta cartaAtual = carta.GetComponent<Carta>();
-            if(cartaAtual.CartaClicada())
-            {
-                cartaAtivaOponente = carta;
+                Carta cartaAtual = carta.GetComponent<Carta>();
+                if (cartaAtual != null && cartaAtual.CartaClicada())
+                {
+                    cartaAtivaPlayer = carta;
+                    cartaAtual.DesativaCarta(); // Desativa a carta após seleção
+                    break; // Encontrou a carta clicada, pode parar a busca
+                }
             }
         }
     }
 
     public void MudaPosicaoCartaPlayer()
     {
-        float posCartaX = localCartas.transform.position.x + 2.3f;
-        cartaAtivaPlayer.transform.position = new Vector3(posCartaX,localCartas.transform.position.y,0);
+        if (cartaAtivaPlayer != null)
+        {
+            float posCartaX = localCartas.transform.position.x + 2.3f;
+            cartaAtivaPlayer.transform.position = new Vector3(posCartaX, localCartas.transform.position.y, 0);
+        }
     }
 
     public void MudaPosicaoCartaOponente()
     {
-        float posCartaX = localCartas.transform.position.x + -1.9f;
-        cartaAtivaOponente.transform.position = new Vector3(posCartaX,localCartas.transform.position.y,0);
+        if (cartaAtivaOponente != null)
+        {
+            float posCartaX = localCartas.transform.position.x - 1.9f;
+            cartaAtivaOponente.transform.position = new Vector3(posCartaX, localCartas.transform.position.y, 0);
+        }
     }
 }
