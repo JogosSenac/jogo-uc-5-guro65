@@ -65,7 +65,7 @@ public class Combate : MonoBehaviour
                 textoIndicador.text = "Nenhuma carta disponível para o oponente.";
                 textoBotao.GetComponent<TextMeshProUGUI>().text = "Inicie o próximo turno";
                 aguardaVez = false;
-                cartaOponenteSelecionada = true; // Evitar a seleção de outra carta do oponente
+                cartaOponenteSelecionada = true; // Evita a seleção de outra carta do oponente
             }
         }
     }
@@ -79,8 +79,8 @@ public class Combate : MonoBehaviour
 
     private void FimdoTurno()
     {
-        textoIndicador.text = "Fim do Turno";
-        textoBotao.GetComponent<TextMeshProUGUI>().text = "Aguarde...";
+        textoIndicador.text = "Cartas Selecionadas";
+        textoBotao.GetComponent<TextMeshProUGUI>().text = "Continuar";
         aguardaVez = false;
     }
 
