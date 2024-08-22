@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Shigaraki
-  dano: 2222
-  defesa: 4444
+  dano: 6666
+  defesa: 6666
   ativa: 0
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0

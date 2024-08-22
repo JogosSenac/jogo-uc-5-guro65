@@ -1866,6 +1866,7 @@ MonoBehaviour:
   - {fileID: 2044514714371304374, guid: 7da2668bc28f22a4c844dfa3e9e0d14c, type: 3}
   - {fileID: 9172839387787682509, guid: d877fd74c222f394b914958e033a1fbc, type: 3}
   - {fileID: 5414598284339943953, guid: a8740e5d6afc21f4f81904c3c70a0f4c, type: 3}
+  - {fileID: 1772640876093001965, guid: 51a4787535dfb3e43813b558f156206b, type: 3}
   deckPlayer: []
   deckOponente: []
   player: {fileID: 0}

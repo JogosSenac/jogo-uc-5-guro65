@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Guro_Full
-  dano: 6500
-  defesa: 7000
+  dano: 7000
+  defesa: 8000
   ativa: 0
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0

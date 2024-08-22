@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Aurora
-  dano: 3000
+  dano: 5000
   defesa: 6000
   ativa: 0
   scalaInicial: {x: 0, y: 0, z: 0}
