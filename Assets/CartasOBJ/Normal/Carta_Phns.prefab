@@ -14,7 +14,11 @@ GameObject:
   - component: {fileID: 1512534160299551192}
   m_Layer: 0
   m_Name: Carta_Phns
+<<<<<<< HEAD
   m_TagString: Carta Player
+=======
+  m_TagString: Carta Oponente
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

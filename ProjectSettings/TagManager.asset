@@ -9,7 +9,11 @@ TagManager:
   - Oponente
   - Carta Player
   - Carta Oponente
+<<<<<<< HEAD
   - TextoBotao
+=======
+  - Carta
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
   layers:
   - Default
   - TransparentFX

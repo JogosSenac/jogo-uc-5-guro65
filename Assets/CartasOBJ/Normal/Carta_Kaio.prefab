@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 427023016939752632}
   m_Layer: 0
   m_Name: Carta_Kaio
-  m_TagString: Carta Oponente
+  m_TagString: Carta Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

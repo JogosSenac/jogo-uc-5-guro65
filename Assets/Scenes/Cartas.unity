@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_guroMidorya
       objectReference: {fileID: 0}
+    - target: {fileID: 1544775917205647913, guid: 6bf661d9acb4b354abdf261ab4b96db9, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 2752017629478062634, guid: 6bf661d9acb4b354abdf261ab4b96db9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -270,6 +274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_Luisa
       objectReference: {fileID: 0}
+    - target: {fileID: 8346964770481690845, guid: fcdebf0e8e1656842ae7602906cf0f4a, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9133368900113707740, guid: fcdebf0e8e1656842ae7602906cf0f4a, type: 3}
     m_RemovedGameObjects: []
@@ -349,6 +357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_boreal
       objectReference: {fileID: 0}
+    - target: {fileID: 6849006518546129827, guid: 3a1f3ed2541b47349a15333671157bc5, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 9104800066508161272, guid: 3a1f3ed2541b47349a15333671157bc5, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -378,6 +390,10 @@ PrefabInstance:
     - target: {fileID: 1260956424658759083, guid: ea46d9e0a8837fe44b2e487234acfea3, type: 3}
       propertyPath: m_Name
       value: Carta_AnaJulia
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260956424658759083, guid: ea46d9e0a8837fe44b2e487234acfea3, type: 3}
+      propertyPath: m_TagString
+      value: Carta
       objectReference: {fileID: 0}
     - target: {fileID: 1780447374610333503, guid: ea46d9e0a8837fe44b2e487234acfea3, type: 3}
       propertyPath: m_LocalScale.x
@@ -566,6 +582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_Guro-65
       objectReference: {fileID: 0}
+    - target: {fileID: 8751370845446203126, guid: 852d7340db7551f4892c52044e712878, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9088722836612232240, guid: 852d7340db7551f4892c52044e712878, type: 3}
     m_RemovedGameObjects: []
@@ -679,6 +699,10 @@ PrefabInstance:
     - target: {fileID: 788099363346357904, guid: 0c64f6a6d17289548bafe77532996307, type: 3}
       propertyPath: m_Name
       value: Carta_carakikaya
+      objectReference: {fileID: 0}
+    - target: {fileID: 788099363346357904, guid: 0c64f6a6d17289548bafe77532996307, type: 3}
+      propertyPath: m_TagString
+      value: Carta
       objectReference: {fileID: 0}
     - target: {fileID: 8327511469388194375, guid: 0c64f6a6d17289548bafe77532996307, type: 3}
       propertyPath: m_LocalScale.x
@@ -836,6 +860,10 @@ PrefabInstance:
     - target: {fileID: 1510041099105099626, guid: 7e1703482030f76499719e8085d6549c, type: 3}
       propertyPath: m_Name
       value: Carta_Chrono
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510041099105099626, guid: 7e1703482030f76499719e8085d6549c, type: 3}
+      propertyPath: m_TagString
+      value: Carta
       objectReference: {fileID: 0}
     - target: {fileID: 5700049010375077849, guid: 7e1703482030f76499719e8085d6549c, type: 3}
       propertyPath: m_SortingOrder
@@ -1073,6 +1101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_geovana
       objectReference: {fileID: 0}
+    - target: {fileID: 9024626390886081733, guid: 5054b84317c96ae43be64be1b66c2525, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 9146601008920544636, guid: 5054b84317c96ae43be64be1b66c2525, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -1191,6 +1223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Carta_Jo\xE3o"
       objectReference: {fileID: 0}
+    - target: {fileID: 173206699790315530, guid: 24f911953c7439342bc208f73eb07f6d, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 8208499116959212579, guid: 24f911953c7439342bc208f73eb07f6d, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -1269,6 +1305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_aureola
       objectReference: {fileID: 0}
+    - target: {fileID: 446950583599400404, guid: 171704a9948e76b4ebf7d47924d486db, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 2045829763541715043, guid: 171704a9948e76b4ebf7d47924d486db, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1339,6 +1379,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2045829763541715043, guid: 171704a9948e76b4ebf7d47924d486db, type: 3}
   m_PrefabInstance: {fileID: 901276135}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!61 &901276138
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1405,6 +1446,9 @@ GameObject:
   m_PrefabInstance: {fileID: 1288134447}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1005563660
+=======
+--- !u!1 &963760840
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1412,6 +1456,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 1005563661}
   - component: {fileID: 1005563662}
   - component: {fileID: 1005563663}
@@ -1551,17 +1596,29 @@ GameObject:
   - component: {fileID: 1116272156}
   m_Layer: 0
   m_Name: SistemaDoPainel
+=======
+  - component: {fileID: 963760842}
+  - component: {fileID: 963760841}
+  m_Layer: 0
+  m_Name: Som
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!114 &1116272156
 MonoBehaviour:
+=======
+--- !u!82 &963760841
+AudioSource:
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1116272155}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1573,15 +1630,115 @@ MonoBehaviour:
   infoText: {fileID: 2035194821}
   closeButton: {fileID: 1984155586}
 --- !u!4 &1116272157
+=======
+  m_GameObject: {fileID: 963760840}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 35b4b1b69dfaf414aa765afd93a6b952, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &963760842
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1116272155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 854.07104, y: 412.85083, z: -5.796573}
+=======
+  m_GameObject: {fileID: 963760840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9726602, y: 0.30909392, z: 0.04985197}
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1603,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_Davi
       objectReference: {fileID: 0}
+    - target: {fileID: 4402295520972095691, guid: ed7cdf803ee8acc4cada81d6cb94cbac, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 4778971821914492282, guid: ed7cdf803ee8acc4cada81d6cb94cbac, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1617,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4778971821914492282, guid: ed7cdf803ee8acc4cada81d6cb94cbac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.6
+      value: -34.2
       objectReference: {fileID: 0}
     - target: {fileID: 4778971821914492282, guid: ed7cdf803ee8acc4cada81d6cb94cbac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1759,6 +1920,10 @@ PrefabInstance:
     - target: {fileID: 1640503642240999713, guid: 5f5352774b79981418e30f4a686a74ff, type: 3}
       propertyPath: m_Name
       value: Carta_baan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640503642240999713, guid: 5f5352774b79981418e30f4a686a74ff, type: 3}
+      propertyPath: m_TagString
+      value: Carta
       objectReference: {fileID: 0}
     - target: {fileID: 7642393875275301812, guid: 5f5352774b79981418e30f4a686a74ff, type: 3}
       propertyPath: m_SortingOrder
@@ -2115,6 +2280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_GuroALma
       objectReference: {fileID: 0}
+    - target: {fileID: 7788590424174708857, guid: d120ba886674b3e4886d5c7165acd758, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 8526121885115081373, guid: d120ba886674b3e4886d5c7165acd758, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -2144,6 +2313,10 @@ PrefabInstance:
     - target: {fileID: 1753251172006559006, guid: 30c8374d4f3e5154ebad528d03a2ec4d, type: 3}
       propertyPath: m_Name
       value: Carta_Kaio
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753251172006559006, guid: 30c8374d4f3e5154ebad528d03a2ec4d, type: 3}
+      propertyPath: m_TagString
+      value: Carta
       objectReference: {fileID: 0}
     - target: {fileID: 1797121461624644223, guid: 30c8374d4f3e5154ebad528d03a2ec4d, type: 3}
       propertyPath: m_SortingOrder
@@ -2831,6 +3004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_aurora
       objectReference: {fileID: 0}
+    - target: {fileID: 8043101969509153655, guid: 3c91a01c76911c3478e24e5dd78da7d0, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2033945164641609417, guid: 3c91a01c76911c3478e24e5dd78da7d0, type: 3}
     - {fileID: 2995750575071878489, guid: 3c91a01c76911c3478e24e5dd78da7d0, type: 3}
@@ -3059,6 +3236,10 @@ PrefabInstance:
     - target: {fileID: 5447980382351871673, guid: aa79e8e3a2a1af04cb767bbf5aa1b390, type: 3}
       propertyPath: m_Name
       value: Carta_fukuma
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447980382351871673, guid: aa79e8e3a2a1af04cb767bbf5aa1b390, type: 3}
+      propertyPath: m_TagString
+      value: Carta
       objectReference: {fileID: 0}
     - target: {fileID: 7376501273698328891, guid: aa79e8e3a2a1af04cb767bbf5aa1b390, type: 3}
       propertyPath: m_LocalScale.x
@@ -3629,6 +3810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta-player
       objectReference: {fileID: 0}
+    - target: {fileID: 7927379516049197691, guid: 670c4735e1fe2d748833b43cc5b2f49b, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 8667126153139686897, guid: 670c4735e1fe2d748833b43cc5b2f49b, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -3925,6 +4110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carta_iris
       objectReference: {fileID: 0}
+    - target: {fileID: 6732544229690776962, guid: ce9c4278bb467ba4b84ea2d62e70016d, type: 3}
+      propertyPath: m_TagString
+      value: Carta
+      objectReference: {fileID: 0}
     - target: {fileID: 7482161322212148321, guid: ce9c4278bb467ba4b84ea2d62e70016d, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -3968,5 +4157,9 @@ SceneRoots:
   - {fileID: 735511338}
   - {fileID: 1561785917}
   - {fileID: 260128857}
+<<<<<<< HEAD
   - {fileID: 1116272157}
   - {fileID: 1353154944}
+=======
+  - {fileID: 963760842}
+>>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
