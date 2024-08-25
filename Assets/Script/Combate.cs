@@ -65,7 +65,6 @@ public class Combate : MonoBehaviour
         {
             if (cartaAtivaOponente == null)
             {
-<<<<<<< HEAD
                 cartaAtivaOponente = EscolherCartaAleatoria(oponente);
                 if (cartaAtivaOponente != null)
                 {
@@ -80,18 +79,6 @@ public class Combate : MonoBehaviour
                     aguardaVez = false;
                     cartaOponenteSelecionada = true;
                 }
-=======
-                cartaOponenteSelecionada = true;
-                MudaPosicaoCartaOponente();
-                StartCoroutine(ContadorTurno());
-            }
-            else
-            {
-                textoIndicador.text = "Nenhuma carta disponível para o oponente.";
-                textoBotao.GetComponent<TextMeshProUGUI>().text = "Inicie o próximo turno";
-                aguardaVez = false;
-                cartaOponenteSelecionada = true; // Evita a seleção de outra carta do oponente
->>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
             }
         }
     }
@@ -113,13 +100,8 @@ public class Combate : MonoBehaviour
 
     private void FimdoTurno()
     {
-<<<<<<< HEAD
         textoIndicador.text = "Fim do Turno";
         AtualizaTextoBotao("Aguarde...");
-=======
-        textoIndicador.text = "Cartas Selecionadas";
-        textoBotao.GetComponent<TextMeshProUGUI>().text = "Continuar";
->>>>>>> 5d124ef7421a4ba37445366c49673153a00460d0
         aguardaVez = false;
     }
 
