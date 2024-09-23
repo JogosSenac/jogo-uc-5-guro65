@@ -100,11 +100,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carta: Pulote1_Shiny
   dano: 7000
-  defesa: 15000
+  defesa: 76900
   ativa: 1
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
   sprite: {fileID: 0}
+  statusDefesa: {fileID: 0}
+  statusDano: {fileID: 0}
 --- !u!61 &4024939737056844392
 BoxCollider2D:
   m_ObjectHideFlags: 0

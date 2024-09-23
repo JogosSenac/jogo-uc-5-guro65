@@ -99,12 +99,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Aurora_Skin
-  dano: 6000
-  defesa: 8000
+  dano: 9000
+  defesa: 18000
   ativa: 1
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
   sprite: {fileID: 0}
+  statusDefesa: {fileID: 0}
+  statusDano: {fileID: 0}
 --- !u!61 &673058723561450059
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -99,12 +99,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: "Jo\xE3o"
-  dano: 2000
-  defesa: 750
+  dano: 13000
+  defesa: 1
   ativa: 1
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
   sprite: {fileID: 0}
+  statusDefesa: {fileID: 0}
+  statusDano: {fileID: 0}
 --- !u!61 &7369841419677004208
 BoxCollider2D:
   m_ObjectHideFlags: 0

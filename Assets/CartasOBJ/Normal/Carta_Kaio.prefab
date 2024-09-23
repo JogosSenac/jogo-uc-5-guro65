@@ -105,6 +105,8 @@ MonoBehaviour:
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
   sprite: {fileID: 0}
+  statusDefesa: {fileID: 0}
+  statusDano: {fileID: 0}
 --- !u!61 &427023016939752632
 BoxCollider2D:
   m_ObjectHideFlags: 0

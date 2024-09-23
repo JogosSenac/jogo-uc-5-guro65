@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2524986238515462490}
   m_Layer: 0
   m_Name: Carta_Carakikaya_skin
-  m_TagString: Carta Player
+  m_TagString: Carta Oponente
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,12 +99,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Carakikaya_Skin
-  dano: 2000
-  defesa: 7000
+  dano: 8600
+  defesa: 15800
   ativa: 1
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
   sprite: {fileID: 0}
+  statusDefesa: {fileID: 0}
+  statusDano: {fileID: 0}
 --- !u!61 &2524986238515462490
 BoxCollider2D:
   m_ObjectHideFlags: 0

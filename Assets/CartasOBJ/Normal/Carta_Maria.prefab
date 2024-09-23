@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1978199290853595735}
   m_Layer: 0
   m_Name: Carta_Maria
-  m_TagString: Carta Player
+  m_TagString: Carta Oponente
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +105,8 @@ MonoBehaviour:
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
   sprite: {fileID: 0}
+  statusDefesa: {fileID: 0}
+  statusDano: {fileID: 0}
 --- !u!61 &1978199290853595735
 BoxCollider2D:
   m_ObjectHideFlags: 0
