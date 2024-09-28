@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: "Aurora_Ra\xE7a"
-  nomeEvolucao: 
-  cartaEvolutivaPrefab: {fileID: 0}
+  nomeEvolucao: "Aurora_Ra\xE7a"
+  cartaEvolutivaPrefab: {fileID: 7194809756007326977}
   dano: 14000
   defesa: 50000
   ativa: 0

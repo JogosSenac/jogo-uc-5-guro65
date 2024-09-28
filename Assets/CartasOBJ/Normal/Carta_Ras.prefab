@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c7f3068289b0f5a49a81a8b8d57b08de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e6ddc68cd513b2418b47d17806fa645, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Ras
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 24000
   defesa: 9500
   ativa: 1

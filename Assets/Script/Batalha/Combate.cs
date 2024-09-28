@@ -265,7 +265,8 @@ public class Combate : MonoBehaviour
         }
     }
 
-        public void ClicarToken(Token token)
+    // Método para clicar no token e evoluir
+    public void ClicarToken(Token token)
     {
         if (cartaAtivaPlayer != null)
         {
@@ -283,25 +284,26 @@ public class Combate : MonoBehaviour
         }
     }
 
-
     // Método para clicar no botão de evolução
-    public void OnBotaoEvolucaoClick()
-{
-    if (cartaAtivaPlayer != null)
+        public void OnBotaoEvolucaoClick()
     {
-        Token token = FindObjectOfType<Token>(); // Obtém o token ativo
-        if (token != null && token.ativo) // Verifica se o token está ativo
+        if (cartaAtivaPlayer != null)
         {
-            BotaoEvoluir botaoEvoluir = FindObjectOfType<BotaoEvoluir>(); // Obtém a instância do BotaoEvoluir
-            botaoEvoluir.SetCartaSelecionada(cartaAtivaPlayer.GetComponent<Carta>()); // Define a carta selecionada
-            botaoEvoluir.TentarEvoluir(); // Tenta evoluir a carta
-        }
-        else
-        {
-            Debug.Log("Token não está ativo.");
+            Token token = FindObjectOfType<Token>(); // Obtém o token ativo
+            if (token != null && token.ativo) // Verifica se o token está ativo
+            {
+                BotaoEvoluir botaoEvoluir = FindObjectOfType<BotaoEvoluir>(); // Obtém a instância do BotaoEvoluir
+                if (botaoEvoluir != null)
+                {
+                    botaoEvoluir.TentarEvoluir(); // Chama o método de tentar evoluir a carta com base no token ativo
+                }
+            }
+            else
+            {
+                Debug.Log("Token não está ativo.");
+            }
         }
     }
-}
 
 
 }

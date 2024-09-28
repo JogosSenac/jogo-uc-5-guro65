@@ -15,15 +15,17 @@ public class Carta : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusDefesa;
     [SerializeField] private TextMeshProUGUI statusDano;
 
+    private Token tokenEvolucao; // Token que pode evoluir esta carta
+
     private void Awake() 
     {
-        ativa = true;
+        ativa = true; // A carta está ativa por padrão
         sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        scalaInicial = transform.localScale;
+        scalaInicial = transform.localScale; // Armazena a escala inicial
         statusDefesa = GameObject.FindWithTag("StatusDefesa").GetComponent<TextMeshProUGUI>();
         statusDano = GameObject.FindWithTag("StatusDano").GetComponent<TextMeshProUGUI>();
     }
@@ -42,14 +44,14 @@ public class Carta : MonoBehaviour
     {
         ativa = false;
     }
-    
+
     private void OnMouseOver() 
     {
         if (ativa)
         {
-            transform.localScale = new Vector3(0.15f, 0.15f, 1);
+            transform.localScale = new Vector3(0.15f, 0.15f, 1); // Aumenta a carta ao passar o mouse
             sprite.sortingOrder = 2; // Mantém a carta na frente
-            statusDefesa.text = "Defesa: " + defesa;
+            statusDefesa.text = "Defesa: " + defesa; // Mostra status
             statusDano.text = "Dano: " + dano;
         }
     }
@@ -58,25 +60,26 @@ public class Carta : MonoBehaviour
     {
         if (ativa && !clicada) 
         {
-            transform.localScale = scalaInicial;
+            transform.localScale = scalaInicial; // Restaura escala ao sair
             sprite.sortingOrder = 2; // Ordenação padrão ao sair
-            statusDefesa.text = "";
+            statusDefesa.text = ""; // Limpa status
             statusDano.text = "";
         }
     }
 
-        private void OnMouseDown()
+    private void OnMouseDown()
     {
         if (ativa)
         {
             clicada = !clicada;
             transform.localScale = clicada ? new Vector3(0.15f, 0.15f, 1) : scalaInicial;
-            
-            // Aqui você deve notificar o Token se foi clicado
+
+            // Obtenha o token ativo (se houver)
             Token token = FindObjectOfType<Token>();
-            if (clicada && token != null)
+            if (clicada && token != null && token.ativo) // Verifica se o token está ativo
             {
-                token.SetCartaSelecionada(this);
+                token.SetCartaSelecionada(this); // Se clicado, define esta carta como selecionada
+                Debug.Log($"Carta {NomeCarta()} selecionada pelo token {token.NomeToken()}");
             }
             else if (!clicada && token != null)
             {
@@ -85,6 +88,15 @@ public class Carta : MonoBehaviour
         }
     }
 
+    public void SetTokenEvolucao(Token token)
+    {
+        tokenEvolucao = token; // Define o token que pode evoluir esta carta
+    }
+
+    public Token GetTokenEvolucao()
+    {
+        return tokenEvolucao; // Retorna o token que pode evoluir esta carta
+    }
 
     public bool CartaClicada()
     {
@@ -107,7 +119,7 @@ public class Carta : MonoBehaviour
 
         if(defesa <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // Destrói a carta se defesa for menor ou igual a zero
         }
         else
         {
@@ -117,6 +129,6 @@ public class Carta : MonoBehaviour
 
     public string NomeCarta()
     {
-        return carta; // Adicionando método para obter o nome da carta
+        return carta; // Retorna o nome da carta
     }
 }

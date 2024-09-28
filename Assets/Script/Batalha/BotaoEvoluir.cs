@@ -4,50 +4,47 @@ using UnityEngine;
 public class BotaoEvoluir : MonoBehaviour
 {
     public List<Token> tokens; // Lista de tokens que podem ser usados para evolução
-    private Carta cartaSelecionada;
 
-    public void SetCartaSelecionada(Carta carta)
+    public void TentarEvoluir()
     {
-        cartaSelecionada = carta;
-        // Lógica adicional se necessário
-    }
+        Token tokenAtivo = null; // Variável para armazenar o token ativo
+        Carta cartaSelecionada = null; // Variável para armazenar a carta selecionada
 
-    public void ResetCartaSelecionada()
-    {
-        cartaSelecionada = null; // Reseta a carta selecionada
-    }
-
-        public void TentarEvoluir()
-    {
-        Carta carta = FindObjectOfType<Token>().GetCartaSelecionada(); // Obtém a carta selecionada pelo token
-        if (carta != null && PodeEvoluir(carta))
+        // Encontra o token ativo e a carta selecionada
+        foreach (Token token in tokens)
         {
-            Debug.Log($"Evoluindo a carta: {carta.NomeCarta()} para {carta.nomeEvolucao}");
-            GameObject cartaEvolutiva = Instantiate(carta.cartaEvolutivaPrefab, carta.transform.position, Quaternion.identity);
-            Destroy(carta.gameObject);
+            if (token.ativo)
+            {
+                tokenAtivo = token;
+                cartaSelecionada = token.GetCartaSelecionada();
+                break; // Para ao encontrar o primeiro token ativo
+            }
+        }
+
+        // Verifica se um token ativo e uma carta selecionada foram encontrados
+        if (tokenAtivo != null && cartaSelecionada != null)
+        {
+            Debug.Log($"Tentando evoluir a carta: {cartaSelecionada.NomeCarta()} com o token: {tokenAtivo.NomeToken()}");
+            tokenAtivo.EvoluirCarta(); // Chama a função que realiza a evolução da carta
         }
         else
         {
-            Debug.Log("Não é possível evoluir.");
-        }
-    }
-
-    private bool PodeEvoluir(Carta carta)
-    {
-        // Verifica se há algum token ativo que pode ser usado para evoluir a carta
-        foreach (Token token in tokens)
-        {
-            if (token.ativo && token.NomeToken() == carta.NomeCarta()) // Verifica se o token está ativo
+            // Exibe mensagens de erro apropriadas
+            if (tokenAtivo == null)
             {
-                return true;
+                Debug.LogWarning("Nenhum token ativo encontrado.");
+            }
+            if (cartaSelecionada == null)
+            {
+                Debug.LogWarning("Nenhuma carta foi selecionada.");
             }
         }
-        return false;
     }
 
     // Método chamado pelo botão de evolução
     public void OnBotaoEvolucaoClick()
     {
+        Debug.Log("Botão de evolução clicado.");
         TentarEvoluir(); // Chama o método que tenta evoluir a carta selecionada
     }
 }

@@ -98,7 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916f6ad1aaff9ab4bae6b98f79cdf97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeToken: Aurora
+  ativo: 0
+  cartasValidas:
+  - {fileID: 2033945164641609417, guid: 3c91a01c76911c3478e24e5dd78da7d0, type: 3}
+  - {fileID: 1970370120896749097, guid: c71b4b3d498ed5e46afd9c6deccba03a, type: 3}
+  cartaSelecionada: {fileID: 2033945164641609417, guid: 3c91a01c76911c3478e24e5dd78da7d0, type: 3}
+  cartaEvolutivaPrefab: {fileID: 7194809756007326977, guid: c71b4b3d498ed5e46afd9c6deccba03a, type: 3}
 --- !u!61 &6627251288375163956
 BoxCollider2D:
   m_ObjectHideFlags: 0

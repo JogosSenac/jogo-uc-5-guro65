@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/Cartas3.unity
     guid: 50e4fb3212d77204e8eb9af5705a70ef
   - enabled: 1
+    path: Assets/Scenes/Menu/Cartas4.unity
+    guid: ad49b66155fbe404aa1f2f2e5066d2b5
+  - enabled: 1
     path: Assets/Scenes/Bosses/Fases.unity
     guid: b315907775063574aa6663f2347d015b
   m_configObjects: {}
