@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Guro Skin
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 3000
   defesa: 3000
   ativa: 0

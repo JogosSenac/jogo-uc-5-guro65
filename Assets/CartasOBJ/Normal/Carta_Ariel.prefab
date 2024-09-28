@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Ariel
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 350
   defesa: 350
   ativa: 1

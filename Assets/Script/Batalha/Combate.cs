@@ -16,16 +16,17 @@ public class Combate : MonoBehaviour
     public TextMeshProUGUI textoResultado; // Texto do Painel de Resultado
     public Button botaoMudarCena; // Botão para mudar de cena
     public Button botaoReplay;
+    public TokenDropManager tokenDropManager; // Referência ao TokenDropManager
+
     private GameObject cartaAtivaPlayer;
     private GameObject cartaAtivaOponente;
     private int vez;
     public bool aguardaVez = true;
     public float tempoTurno;
     private bool cartaOponenteSelecionada = false;
-    //[SerializeField] private TextMeshProUGUI vitorias;
-    //[SerializeField] private float tempoDoTurno;
     public int cartasPlayer = 5;
     public int cartasOponente = 5;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
@@ -38,7 +39,6 @@ public class Combate : MonoBehaviour
         botaoReplay.onClick.AddListener(Replay);
         vez = 1;
         AtualizaTextoBotao("Inicie o Turno");
-        //vitorias = GameObject.Find("Vitorias").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -66,30 +66,6 @@ public class Combate : MonoBehaviour
         VerificaDerrota();
         VerificaVitoria();
     }
-
-    /*public void JogarCartaOponente()
-    {
-        if (vez == 2)
-        {
-            if (cartaAtivaOponente == null)
-            {
-                cartaAtivaOponente = EscolherCartaAleatoria(oponente);
-                if (cartaAtivaOponente != null)
-                {
-                    cartaOponenteSelecionada = true;
-                    MudaPosicaoCartaOponente();
-                    StartCoroutine(ContadorTurno());
-                }
-                else
-                {
-                    textoIndicador.text = "Nenhuma carta disponível para o oponente.";
-                    AtualizaTextoBotao("Inicie o próximo turno");
-                    aguardaVez = false;
-                    cartaOponenteSelecionada = true;
-                }
-            }
-        }
-    }*/
 
     private void VezDoPlayer()
     {
@@ -160,7 +136,7 @@ public class Combate : MonoBehaviour
             FinalizaCombate();
             FimdoTurno();
         }
-        
+
         aguardaVez = true;
         AtualizaTextoBotao("Inicie o Turno");
     }
@@ -185,6 +161,9 @@ public class Combate : MonoBehaviour
 
             if (cartaOponente.defesa <= 0)
             {
+                // Chama o método de drop de token
+                tokenDropManager.DroparToken(cartaAtivaOponente.transform.position);
+
                 Destroy(cartaAtivaOponente);
                 cartaAtivaOponente = null;
                 cartasOponente--;
@@ -206,14 +185,6 @@ public class Combate : MonoBehaviour
         if (cartasPlayer <= 0)
         {
             MostrarResultado("Você perdeu!");
-        }
-    }
-
-    private void VerificaEmpate()
-    {
-        if (cartasOponente <= 0 && cartasPlayer <= 0)
-        {
-            MostrarResultado("Empate!");
         }
     }
 
@@ -293,4 +264,44 @@ public class Combate : MonoBehaviour
             textoBotao.GetComponent<TextMeshProUGUI>().text = texto;
         }
     }
+
+        public void ClicarToken(Token token)
+    {
+        if (cartaAtivaPlayer != null)
+        {
+            Carta cartaSelecionada = cartaAtivaPlayer.GetComponent<Carta>();
+            
+            if (token.ativo)
+            {
+                token.SetCartaSelecionada(cartaSelecionada); // Define a carta selecionada no token
+                Debug.Log($"Token clicado. Carta selecionada: {cartaSelecionada.NomeCarta()}");
+            }
+            else
+            {
+                Debug.Log("Token não está ativo.");
+            }
+        }
+    }
+
+
+    // Método para clicar no botão de evolução
+    public void OnBotaoEvolucaoClick()
+{
+    if (cartaAtivaPlayer != null)
+    {
+        Token token = FindObjectOfType<Token>(); // Obtém o token ativo
+        if (token != null && token.ativo) // Verifica se o token está ativo
+        {
+            BotaoEvoluir botaoEvoluir = FindObjectOfType<BotaoEvoluir>(); // Obtém a instância do BotaoEvoluir
+            botaoEvoluir.SetCartaSelecionada(cartaAtivaPlayer.GetComponent<Carta>()); // Define a carta selecionada
+            botaoEvoluir.TentarEvoluir(); // Tenta evoluir a carta
+        }
+        else
+        {
+            Debug.Log("Token não está ativo.");
+        }
+    }
+}
+
+
 }

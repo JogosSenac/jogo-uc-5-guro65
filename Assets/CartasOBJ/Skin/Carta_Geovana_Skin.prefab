@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Geovana_Skin
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 16753
   defesa: 11000
   ativa: 1

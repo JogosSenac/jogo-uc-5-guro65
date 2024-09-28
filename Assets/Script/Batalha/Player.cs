@@ -4,28 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private List<GameObject> deck = new List<GameObject>();
-    public List<GameObject> deckNaTela = new List<GameObject>();
-    public Baralho baralho;
-    public GameObject localDeck;
-    public bool minhaVez;
-    public float offsetX;
-    public float tempo;
-    public string tipo;
+    private List<GameObject> deck = new List<GameObject>(); // Deck do jogador
+    public List<GameObject> deckNaTela = new List<GameObject>(); // Cartas na tela
+    public List<Token> tokens = new List<Token>(); // Lista de tokens
+    public Baralho baralho; // Referência ao baralho
+    public GameObject localDeck; // Local onde as cartas serão instanciadas
+    public bool minhaVez; // Indica se é a vez do jogador
+    public float offsetX; // Offset para posicionar as cartas
+    public float tempo; // Tempo entre a colocação das cartas
+    public string tipo; // Tipo do jogador (Player ou Oponente)
 
-    // Start is called before the first frame update
     void Start()
     {
         baralho = GameObject.Find("Baralho").GetComponent<Baralho>();
         int limite = tipo == "Player" ? baralho.limitePlayer : baralho.limiteOponente; // Obtém o limite correto
         deck = baralho.DeckInicial(limite, tipo);
-        StartCoroutine("ColocarCartasNaMesa");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartCoroutine(ColocarCartasNaMesa()); // Inicia a corrotina
     }
 
     IEnumerator ColocarCartasNaMesa()
@@ -34,7 +28,8 @@ public class Player : MonoBehaviour
         Vector3 offset = new Vector3(offsetX, 0, 0);
         foreach (GameObject carta in deck)
         {
-            Instantiate(carta, posCarta += offset, Quaternion.identity);
+            Instantiate(carta, posCarta, Quaternion.identity);
+            posCarta += offset; // Atualiza a posição para a próxima carta
             yield return new WaitForSeconds(tempo);
         }
 
@@ -44,17 +39,7 @@ public class Player : MonoBehaviour
 
     private void PegaCartasNaTela()
     {
-        GameObject[] cartasNoJogo;
-
-        if (tipo == "Player")
-        {
-            cartasNoJogo = GameObject.FindGameObjectsWithTag("Carta Player");
-        }
-        else // "Oponente"
-        {
-            cartasNoJogo = GameObject.FindGameObjectsWithTag("Carta Oponente");
-        }
-
+        GameObject[] cartasNoJogo = GameObject.FindGameObjectsWithTag(tipo == "Player" ? "Carta Player" : "Carta Oponente");
         foreach (GameObject carta in cartasNoJogo)
         {
             deckNaTela.Add(carta);
@@ -64,22 +49,18 @@ public class Player : MonoBehaviour
     public void MinhaVez(bool vez)
     {
         minhaVez = vez;
-
-        if (vez)
-        {
-            AtivaDeck();
-        }
-        else
-        {
-            DesativaDeck();
-        }
+        if (vez) AtivaDeck();
+        else DesativaDeck();
     }
 
     private void AtivaDeck()
     {
         foreach (GameObject carta in deckNaTela)
         {
-            carta.GetComponent<Carta>().AtivaCarta();
+            if (carta.TryGetComponent<Carta>(out Carta cartaComp))
+            {
+                cartaComp.AtivaCarta();
+            }
         }
     }
 
@@ -87,17 +68,32 @@ public class Player : MonoBehaviour
     {
         foreach (GameObject carta in deckNaTela)
         {
-            carta.GetComponent<Carta>().DesativaCarta();
+            if (carta.TryGetComponent<Carta>(out Carta cartaComp))
+            {
+                cartaComp.DesativaCarta();
+            }
         }
+    }
+
+    public void AddToken(Token token)
+    {
+        tokens.Add(token);
+        Debug.Log($"Token adicionado: {token.NomeToken()}");
+    }
+
+    public void RemoveToken(Token token)
+    {
+        tokens.Remove(token);
+        Debug.Log($"Token removido: {token.NomeToken()}");
     }
 
     public Vector3 LocalDeck()
     {
-        return localDeck.transform.position;
+        return localDeck.transform.position; // Retorna a posição do local do deck
     }
 
     public List<GameObject> DeckNaTela()
     {
-        return deckNaTela;
+        return deckNaTela; // Retorna as cartas na tela
     }
 }

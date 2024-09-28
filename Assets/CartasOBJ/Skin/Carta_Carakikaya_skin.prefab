@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Carakikaya_Skin
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 8600
   defesa: 15800
   ativa: 1

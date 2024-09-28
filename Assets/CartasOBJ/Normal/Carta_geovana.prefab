@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Geovana
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 9360
   defesa: 36753
   ativa: 1

@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Nazuna
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 4000
   defesa: 16450
   ativa: 1

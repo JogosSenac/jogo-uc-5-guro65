@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: "Jo\xE3o Carlos"
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 2000
   defesa: 1000
   ativa: 1

@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Basic_Full
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 7000
   defesa: 65000
   ativa: 0

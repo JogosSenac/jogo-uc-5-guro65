@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Aurora_Skin
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 9000
   defesa: 18000
   ativa: 1

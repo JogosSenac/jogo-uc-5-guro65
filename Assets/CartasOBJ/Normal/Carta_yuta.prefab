@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Yuta
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 32000
   defesa: 5000
   ativa: 1

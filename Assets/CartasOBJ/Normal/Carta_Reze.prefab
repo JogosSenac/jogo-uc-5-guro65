@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Reze
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 32000
   defesa: 7400
   ativa: 0

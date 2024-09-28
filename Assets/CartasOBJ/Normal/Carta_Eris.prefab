@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Eris
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 3000
   defesa: 10500
   ativa: 0

@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Pulote1
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 3500
   defesa: 57430
   ativa: 0

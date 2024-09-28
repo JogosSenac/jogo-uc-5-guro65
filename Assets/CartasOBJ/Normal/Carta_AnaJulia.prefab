@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Ana Julia
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 1500
   defesa: 800
   ativa: 1

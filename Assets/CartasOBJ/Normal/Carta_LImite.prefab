@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Limitles
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 9876
   defesa: 2000
   ativa: 0

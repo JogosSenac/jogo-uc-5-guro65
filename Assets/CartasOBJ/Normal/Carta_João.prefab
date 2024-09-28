@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7369841419677004208}
   m_Layer: 0
   m_Name: "Carta_Jo\xE3o"
-  m_TagString: Carta Player
+  m_TagString: Carta Oponente
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: "Jo\xE3o"
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 13000
   defesa: 1
   ativa: 1

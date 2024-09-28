@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: "Carakikaya_Ra\xE7a"
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 12000
   defesa: 57870
   ativa: 0

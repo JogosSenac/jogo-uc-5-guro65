@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Shigaraki
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 66666
   defesa: 9999
   ativa: 0

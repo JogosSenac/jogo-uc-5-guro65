@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Carakikaya_Shiny
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 10350
   defesa: 67865
   ativa: 0

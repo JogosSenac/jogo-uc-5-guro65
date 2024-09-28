@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class Carta : MonoBehaviour
 {
-    public string carta;
+    public string carta; // Nome da carta
+    public string nomeEvolucao; // Nome da carta após a evolução
+    public GameObject cartaEvolutivaPrefab; // Prefab da carta evolutiva
     public int dano;
     public int defesa;
     public bool ativa;
@@ -28,7 +28,10 @@ public class Carta : MonoBehaviour
         statusDano = GameObject.FindWithTag("StatusDano").GetComponent<TextMeshProUGUI>();
     }
 
-    private void Update() { }
+    private void Update()
+    {
+        // Implementar lógica adicional aqui, se necessário
+    }
 
     public void AtivaCarta()
     {
@@ -49,13 +52,6 @@ public class Carta : MonoBehaviour
             statusDefesa.text = "Defesa: " + defesa;
             statusDano.text = "Dano: " + dano;
         }
-        else if (!ativa && clicada)
-        {
-            transform.localScale = new Vector3(0.1f, 0.1f, 1);
-            sprite.sortingOrder = 2; // Mantém a carta na frente mesmo se clicada
-            statusDefesa.text = "Defesa: " + defesa;
-            statusDano.text = "Dano: " + dano;
-        }
     }
 
     private void OnMouseExit() 
@@ -67,24 +63,28 @@ public class Carta : MonoBehaviour
             statusDefesa.text = "";
             statusDano.text = "";
         }
-        else if (!ativa && clicada)
-        {
-            transform.localScale = scalaInicial;
-            sprite.sortingOrder = 2; // Ordenação padrão ao sair
-            statusDefesa.text = "";
-            statusDano.text = "";
-        }
     }
 
-    private void OnMouseDown() 
+        private void OnMouseDown()
     {
         if (ativa)
         {
             clicada = !clicada;
             transform.localScale = clicada ? new Vector3(0.15f, 0.15f, 1) : scalaInicial;
-            sprite.sortingOrder = clicada ? 2 : 0; // Mantém na frente ao clicar
+            
+            // Aqui você deve notificar o Token se foi clicado
+            Token token = FindObjectOfType<Token>();
+            if (clicada && token != null)
+            {
+                token.SetCartaSelecionada(this);
+            }
+            else if (!clicada && token != null)
+            {
+                token.ResetToken();
+            }
         }
     }
+
 
     public bool CartaClicada()
     {
@@ -113,5 +113,10 @@ public class Carta : MonoBehaviour
         {
             sprite.sortingOrder = 2; // Garante que a carta continue na frente após dano
         }
+    }
+
+    public string NomeCarta()
+    {
+        return carta; // Adicionando método para obter o nome da carta
     }
 }

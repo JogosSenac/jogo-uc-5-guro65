@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Mahoraga
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 5000
   defesa: 75875
   ativa: 1

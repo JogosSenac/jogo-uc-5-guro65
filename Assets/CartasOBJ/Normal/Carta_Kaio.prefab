@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Kaio
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 800
   defesa: 750
   ativa: 0

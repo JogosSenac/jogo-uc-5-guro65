@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: black plague
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 6555
   defesa: 24000
   ativa: 0

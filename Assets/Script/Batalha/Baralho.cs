@@ -1,35 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Baralho : MonoBehaviour
 {
-    public List<GameObject> cartas = new List<GameObject>();
-    public List<GameObject> deckPlayer = new List<GameObject>();
-    public List<GameObject> deckOponente = new List<GameObject>();
-    public Player player;
-    public Player oponente;
-    public float offsetX;
-    public int tempo;
-    public GameObject cartaSorteada;
-    private Vector3 posCarta;
-    private Vector3 offset;
+    public List<GameObject> cartas = new List<GameObject>(); // Lista de cartas disponíveis
+    public List<Token> tokens = new List<Token>(); // Lista de tokens disponíveis
+    public List<GameObject> deckPlayer = new List<GameObject>(); // Deck do jogador
+    public List<GameObject> deckOponente = new List<GameObject>(); // Deck do oponente
+    public Player player; // Referência ao jogador
+    public Player oponente; // Referência ao oponente
+    public float offsetX; // Offset para posicionar cartas
+    public GameObject cartaSorteada; // Carta sorteada
     public int limitePlayer = 5; // Limite de cartas do player
     public int limiteOponente = 5; // Limite de cartas do oponente
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         oponente = GameObject.FindWithTag("Oponente").GetComponent<Player>();
         DeckInicialOponente();
         DeckInicialPlayer();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public List<GameObject> DeckInicial(int limite, string tipo)
@@ -42,7 +32,7 @@ public class Baralho : MonoBehaviour
         {
             return deckOponente;
         }
-        
+
         return null;
     }
 
@@ -53,8 +43,8 @@ public class Baralho : MonoBehaviour
         for (int i = 0; i < limitePlayer; i++)
         {
             cartaSorteada = cartas[Random.Range(0, cartas.Count)];
-            cartaSorteada.gameObject.tag = "Carta Player";
-            Instantiate(cartaSorteada, posCarta += offset, Quaternion.identity);
+            cartaSorteada.tag = "Carta Player"; // Define a tag da carta
+            Instantiate(cartaSorteada, posCarta += offset, Quaternion.identity); // Instancia a carta
         }
     }
 
@@ -65,8 +55,17 @@ public class Baralho : MonoBehaviour
         for (int i = 0; i < limiteOponente; i++)
         {
             cartaSorteada = cartas[Random.Range(0, cartas.Count)];
-            cartaSorteada.gameObject.tag = "Carta Oponente";
-            Instantiate(cartaSorteada, posCarta += offset, Quaternion.identity);
+            cartaSorteada.tag = "Carta Oponente"; // Define a tag da carta
+            Instantiate(cartaSorteada, posCarta += offset, Quaternion.identity); // Instancia a carta
+        }
+    }
+
+    public void AdicionarTokenAoJogador()
+    {
+        if (tokens.Count > 0)
+        {
+            Token tokenSorteado = tokens[Random.Range(0, tokens.Count)];
+            player.AddToken(tokenSorteado); // Adiciona token ao jogador
         }
     }
 }

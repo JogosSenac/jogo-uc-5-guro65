@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 187912347077552996}
   m_Layer: 0
   m_Name: Carta_Baan_Skin (2)
-  m_TagString: Carta Oponente
+  m_TagString: Carta Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Baan Skin
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 6000
   defesa: 26500
   ativa: 0

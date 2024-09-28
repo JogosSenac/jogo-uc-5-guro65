@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Yano
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 8000
   defesa: 12000
   ativa: 0

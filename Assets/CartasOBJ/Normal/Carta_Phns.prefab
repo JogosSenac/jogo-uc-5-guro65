@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Phns
+  nomeEvolucao: 
+  cartaEvolutivaPrefab: {fileID: 0}
   dano: 9843
   defesa: 13000
   ativa: 1
