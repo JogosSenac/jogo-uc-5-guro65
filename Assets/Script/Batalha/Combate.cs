@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Para mudar de cena
-using UnityEngine.UI; // Para usar o UI
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Combate : MonoBehaviour
 {
@@ -12,12 +12,11 @@ public class Combate : MonoBehaviour
     public TextMeshProUGUI textoIndicador;
     public BoxCollider2D localCartas;
     public GameObject textoBotao;
-    public GameObject painelResultado; // Painel de Resultado
-    public TextMeshProUGUI textoResultado; // Texto do Painel de Resultado
-    public Button botaoMudarCena; // Botão para mudar de cena
+    public GameObject painelResultado;
+    public TextMeshProUGUI textoResultado;
+    public Button botaoMudarCena;
     public Button botaoReplay;
-    public TokenDropManager tokenDropManager; // Referência ao TokenDropManager
-
+    public TokenDropManager tokenDropManager;
     private GameObject cartaAtivaPlayer;
     private GameObject cartaAtivaOponente;
     private int vez;
@@ -34,7 +33,7 @@ public class Combate : MonoBehaviour
         textoIndicador = GameObject.FindWithTag("Indicador").GetComponent<TextMeshProUGUI>();
         localCartas = GameObject.FindWithTag("Local").GetComponent<BoxCollider2D>();
         textoBotao = GameObject.FindWithTag("TextoBotao");
-        painelResultado.SetActive(false); // Inicialmente escondido
+        painelResultado.SetActive(false);
         botaoMudarCena.onClick.AddListener(Voltar);
         botaoReplay.onClick.AddListener(Replay);
         vez = 1;
@@ -141,7 +140,7 @@ public class Combate : MonoBehaviour
         AtualizaTextoBotao("Inicie o Turno");
     }
 
-    private void FinalizaCombate()
+        private void FinalizaCombate()
     {
         if (cartaAtivaPlayer != null && cartaAtivaOponente != null)
         {
@@ -151,6 +150,7 @@ public class Combate : MonoBehaviour
             cartaOponente.CalculaDano(cartaPlayer.DanoCarta());
             cartaPlayer.CalculaDano(cartaOponente.DanoCarta());
 
+            
             if (cartaPlayer.defesa <= 0)
             {
                 Destroy(cartaAtivaPlayer);
@@ -159,10 +159,11 @@ public class Combate : MonoBehaviour
                 VerificaVitoria();
             }
 
+            
             if (cartaOponente.defesa <= 0)
             {
-                // Chama o método de drop de token
-                tokenDropManager.DroparToken(cartaAtivaOponente.transform.position);
+                
+                tokenDropManager.OnCartaDerrotada(); 
 
                 Destroy(cartaAtivaOponente);
                 cartaAtivaOponente = null;
@@ -171,6 +172,7 @@ public class Combate : MonoBehaviour
             }
         }
     }
+
 
     private void VerificaVitoria()
     {
@@ -265,45 +267,44 @@ public class Combate : MonoBehaviour
         }
     }
 
-    // Método para clicar no token e evoluir
+
     public void ClicarToken(Token token)
     {
         if (cartaAtivaPlayer != null)
         {
             Carta cartaSelecionada = cartaAtivaPlayer.GetComponent<Carta>();
             
-            if (token.ativo)
+            if (token.ativo && cartaSelecionada != null)
             {
-                token.SetCartaSelecionada(cartaSelecionada); // Define a carta selecionada no token
+                token.SetCartaSelecionada(cartaSelecionada);
                 Debug.Log($"Token clicado. Carta selecionada: {cartaSelecionada.NomeCarta()}");
-            }
-            else
-            {
-                Debug.Log("Token não está ativo.");
-            }
-        }
-    }
 
-    // Método para clicar no botão de evolução
-        public void OnBotaoEvolucaoClick()
-    {
-        if (cartaAtivaPlayer != null)
-        {
-            Token token = FindObjectOfType<Token>(); // Obtém o token ativo
-            if (token != null && token.ativo) // Verifica se o token está ativo
-            {
-                BotaoEvoluir botaoEvoluir = FindObjectOfType<BotaoEvoluir>(); // Obtém a instância do BotaoEvoluir
-                if (botaoEvoluir != null)
+                if (cartaSelecionada.Evoluiu())
                 {
-                    botaoEvoluir.TentarEvoluir(); // Chama o método de tentar evoluir a carta com base no token ativo
+                    AtualizarCartaAtiva(cartaSelecionada);
+                    Debug.Log("Carta evoluída e ativada no combate.");
+                }
+                else
+                {
+                    Debug.Log("Carta não evoluiu.");
                 }
             }
             else
             {
-                Debug.Log("Token não está ativo.");
+                Debug.Log("Token não está ativo ou carta não selecionada.");
             }
+        }
+        else
+        {
+            Debug.Log("Nenhuma carta ativa selecionada.");
         }
     }
 
+    
+    private void AtualizarCartaAtiva(Carta novaCarta)
+    {
+        cartaAtivaPlayer = novaCarta.gameObject;
+        Debug.Log($"Carta atualizada para: {novaCarta.NomeCarta()} após evolução.");
+    }
 
 }

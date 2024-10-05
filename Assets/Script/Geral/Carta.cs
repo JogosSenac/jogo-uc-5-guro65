@@ -3,36 +3,39 @@ using TMPro;
 
 public class Carta : MonoBehaviour
 {
-    public string carta; // Nome da carta
-    public string nomeEvolucao; // Nome da carta após a evolução
-    public GameObject cartaEvolutivaPrefab; // Prefab da carta evolutiva
+    public string carta;
+    public string nomeEvolucao;
+    public GameObject cartaEvolutivaPrefab;
     public int dano;
     public int defesa;
     public bool ativa;
     public Vector3 scalaInicial;
     public bool clicada = false;
+    public bool evoluida = false;
     public SpriteRenderer sprite;
     [SerializeField] private TextMeshProUGUI statusDefesa;
     [SerializeField] private TextMeshProUGUI statusDano;
+    [SerializeField] private TextMeshProUGUI statusNome;
 
-    private Token tokenEvolucao; // Token que pode evoluir esta carta
+    private Token tokenEvolucao;
 
     private void Awake() 
     {
-        ativa = true; // A carta está ativa por padrão
+        ativa = true;
         sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        scalaInicial = transform.localScale; // Armazena a escala inicial
+        scalaInicial = transform.localScale;
         statusDefesa = GameObject.FindWithTag("StatusDefesa").GetComponent<TextMeshProUGUI>();
         statusDano = GameObject.FindWithTag("StatusDano").GetComponent<TextMeshProUGUI>();
+        statusNome = GameObject.FindWithTag("StatusNome").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        // Implementar lógica adicional aqui, se necessário
+       
     }
 
     public void AtivaCarta()
@@ -49,10 +52,11 @@ public class Carta : MonoBehaviour
     {
         if (ativa)
         {
-            transform.localScale = new Vector3(0.15f, 0.15f, 1); // Aumenta a carta ao passar o mouse
-            sprite.sortingOrder = 2; // Mantém a carta na frente
-            statusDefesa.text = "Defesa: " + defesa; // Mostra status
+            transform.localScale = new Vector3(0.15f, 0.15f, 1);
+            sprite.sortingOrder = 2;
+            statusDefesa.text = "Defesa: " + defesa;
             statusDano.text = "Dano: " + dano;
+            statusNome.text = "Nome: " + (evoluida ? nomeEvolucao : carta);
         }
     }
 
@@ -60,10 +64,11 @@ public class Carta : MonoBehaviour
     {
         if (ativa && !clicada) 
         {
-            transform.localScale = scalaInicial; // Restaura escala ao sair
-            sprite.sortingOrder = 2; // Ordenação padrão ao sair
-            statusDefesa.text = ""; // Limpa status
+            transform.localScale = scalaInicial;
+            sprite.sortingOrder = 2;
+            statusDefesa.text = "";
             statusDano.text = "";
+            statusNome.text = "";
         }
     }
 
@@ -74,12 +79,10 @@ public class Carta : MonoBehaviour
             clicada = !clicada;
             transform.localScale = clicada ? new Vector3(0.15f, 0.15f, 1) : scalaInicial;
 
-            // Obtenha o token ativo (se houver)
             Token token = FindObjectOfType<Token>();
-            if (clicada && token != null && token.ativo) // Verifica se o token está ativo
+            if (clicada && token != null && token.ativo)
             {
-                token.SetCartaSelecionada(this); // Se clicado, define esta carta como selecionada
-                Debug.Log($"Carta {NomeCarta()} selecionada pelo token {token.NomeToken()}");
+                token.SetCartaSelecionada(this);
             }
             else if (!clicada && token != null)
             {
@@ -90,12 +93,12 @@ public class Carta : MonoBehaviour
 
     public void SetTokenEvolucao(Token token)
     {
-        tokenEvolucao = token; // Define o token que pode evoluir esta carta
+        tokenEvolucao = token;
     }
 
     public Token GetTokenEvolucao()
     {
-        return tokenEvolucao; // Retorna o token que pode evoluir esta carta
+        return tokenEvolucao;
     }
 
     public bool CartaClicada()
@@ -119,16 +122,32 @@ public class Carta : MonoBehaviour
 
         if(defesa <= 0)
         {
-            Destroy(gameObject); // Destrói a carta se defesa for menor ou igual a zero
+            Destroy(gameObject);
         }
         else
         {
-            sprite.sortingOrder = 2; // Garante que a carta continue na frente após dano
+            sprite.sortingOrder = 2;
         }
     }
 
     public string NomeCarta()
     {
-        return carta; // Retorna o nome da carta
+        return evoluida ? nomeEvolucao : carta;
+    }
+
+    public bool Evoluiu()
+    {
+        return evoluida;
+    }
+
+    public void Evoluir()
+    {
+        if (!evoluida)
+        {
+            evoluida = true;
+            carta = nomeEvolucao;
+            dano += 10;
+            defesa += 10;
+        }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 673058723561450059}
   m_Layer: 0
   m_Name: Carta_Aurora_Skin
-  m_TagString: Carta Oponente
+  m_TagString: Carta Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   statusDefesa: {fileID: 0}
   statusDano: {fileID: 0}
+  statusNome: {fileID: 0}
 --- !u!61 &673058723561450059
 BoxCollider2D:
   m_ObjectHideFlags: 0

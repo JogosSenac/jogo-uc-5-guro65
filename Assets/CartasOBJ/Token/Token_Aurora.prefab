@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6511799062872154384}
   - component: {fileID: 1034722280325747888}
-  - component: {fileID: 2988940475313488472}
+  - component: {fileID: -1980827498479204752}
   - component: {fileID: 6627251288375163956}
   m_Layer: 0
   m_Name: Token_Aurora
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2988940475313488472
+--- !u!114 &-1980827498479204752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,9 +101,9 @@ MonoBehaviour:
   ativo: 0
   cartasValidas:
   - {fileID: 2033945164641609417, guid: 3c91a01c76911c3478e24e5dd78da7d0, type: 3}
-  - {fileID: 1970370120896749097, guid: c71b4b3d498ed5e46afd9c6deccba03a, type: 3}
-  cartaSelecionada: {fileID: 2033945164641609417, guid: 3c91a01c76911c3478e24e5dd78da7d0, type: 3}
-  cartaEvolutivaPrefab: {fileID: 7194809756007326977, guid: c71b4b3d498ed5e46afd9c6deccba03a, type: 3}
+  prefabsCartaRaca:
+  - {fileID: 7194809756007326977, guid: c71b4b3d498ed5e46afd9c6deccba03a, type: 3}
+  cartaSelecionada: {fileID: 0}
 --- !u!61 &6627251288375163956
 BoxCollider2D:
   m_ObjectHideFlags: 0

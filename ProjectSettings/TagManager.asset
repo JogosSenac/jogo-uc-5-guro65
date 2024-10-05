@@ -12,6 +12,8 @@ TagManager:
   - TextoBotao
   - StatusDefesa
   - StatusDano
+  - StatusNome
+  - StatusEvolve
   layers:
   - Default
   - TransparentFX

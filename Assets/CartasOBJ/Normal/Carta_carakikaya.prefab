@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6347963699680039935}
   m_Layer: 0
   m_Name: Carta_carakikaya
-  m_TagString: Carta Oponente
+  m_TagString: Carta Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,16 +99,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carta: Carakikaya
-  nomeEvolucao: 
-  cartaEvolutivaPrefab: {fileID: 0}
+  nomeEvolucao: Carakikaya
+  cartaEvolutivaPrefab: {fileID: 2055084700670994258, guid: a35488ef6d46bc54fb4b960890b4cd65, type: 3}
   dano: 7000
   defesa: 14000
   ativa: 1
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
+  evoluida: 0
   sprite: {fileID: 0}
   statusDefesa: {fileID: 0}
   statusDano: {fileID: 0}
+  statusNome: {fileID: 0}
 --- !u!61 &6347963699680039935
 BoxCollider2D:
   m_ObjectHideFlags: 0
