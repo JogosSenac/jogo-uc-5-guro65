@@ -9,6 +9,7 @@ public class Token : MonoBehaviour
     public List<GameObject> prefabsCartaRaca; // Lista de prefabs de cartas raça correspondente
     public Carta cartaSelecionada; // Carta que foi selecionada para evolução
     [SerializeField] private TextMeshProUGUI statusEvolve; // Referência ao componente TextMeshProUGUI
+    private Player player; // Referência ao jogador que contém o deckNaTela
 
     private void Awake()
     {
@@ -19,6 +20,9 @@ public class Token : MonoBehaviour
     {
         // Tenta encontrar o texto na cena por tag. Certifique-se de que o objeto está configurado corretamente.
         statusEvolve = GameObject.FindWithTag("StatusEvolve").GetComponent<TextMeshProUGUI>();
+        
+        // Encontra o jogador (Player) na cena. Verifique se o nome está correto ou use outro método, se necessário.
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     // Método para ativar o token ao clicar nele
@@ -107,14 +111,18 @@ public class Token : MonoBehaviour
             if (index >= 0 && index < prefabsCartaRaca.Count)
             {
                 Vector3 posicaoCarta = cartaSelecionada.transform.position;
-                Destroy(cartaSelecionada.gameObject);
+                GameObject cartaAntiga = cartaSelecionada.gameObject; // Armazena a referência da carta antiga
+                Destroy(cartaSelecionada.gameObject); // Destrói a carta antiga
 
                 GameObject novaCarta = Instantiate(prefabsCartaRaca[index], posicaoCarta, Quaternion.identity);
-                novaCarta.tag = "CartaPlayer";
-                Debug.Log($"Carta {cartaSelecionada.NomeCarta()} evoluiu para: {novaCarta.GetComponent<Carta>().NomeCarta()}");
+                novaCarta.tag = "CartaPlayer"; // Define a tag correta para a nova carta
+                Debug.Log($"Carta {cartaAntiga.GetComponent<Carta>().NomeCarta()} evoluiu para: {novaCarta.GetComponent<Carta>().NomeCarta()}");
 
-                Destroy(gameObject);
-                ResetToken();
+                // Adiciona a nova carta ao deckNaTela do Player
+                AdicionarNovaCartaAoDeckNaTela(novaCarta);
+
+                Destroy(gameObject); // Destrói o token após a evolução
+                ResetToken(); // Reseta o token para estado inicial
             }
             else
             {
@@ -124,6 +132,20 @@ public class Token : MonoBehaviour
         else
         {
             Debug.LogWarning("Nenhuma carta válida foi selecionada ou o token não pode evoluir essa carta.");
+        }
+    }
+
+    private void AdicionarNovaCartaAoDeckNaTela(GameObject novaCarta)
+    {
+        if (player != null)
+        {
+            // Adiciona a nova carta ao deckNaTela
+            player.deckNaTela.Add(novaCarta);
+            Debug.Log($"Nova carta {novaCarta.GetComponent<Carta>().NomeCarta()} adicionada ao deck na tela.");
+        }
+        else
+        {
+            Debug.LogError("Player não encontrado. A carta não pôde ser adicionada ao deck.");
         }
     }
 

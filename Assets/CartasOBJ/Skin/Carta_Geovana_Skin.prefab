@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4392532677563267095}
   m_Layer: 0
   m_Name: Carta_Geovana_Skin
-  m_TagString: Carta Oponente
+  m_TagString: Carta Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

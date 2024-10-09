@@ -106,6 +106,7 @@ MonoBehaviour:
   ativa: 0
   scalaInicial: {x: 0, y: 0, z: 0}
   clicada: 0
+  evoluida: 0
   sprite: {fileID: 0}
   statusDefesa: {fileID: 0}
   statusDano: {fileID: 0}
