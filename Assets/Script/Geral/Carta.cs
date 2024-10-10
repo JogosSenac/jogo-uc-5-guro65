@@ -5,7 +5,7 @@ public class Carta : MonoBehaviour
 {
     public string carta;
     public string nomeEvolucao;
-    public GameObject cartaEvolutivaPrefab; // Prefab da carta evoluída
+    public GameObject cartaEvolutivaPrefab;
     public int dano;
     public int defesa;
     public bool ativa;
@@ -140,46 +140,14 @@ public class Carta : MonoBehaviour
         return evoluida;
     }
 
-    public GameObject Evoluir()
-{
-    if (!evoluida)
+    public void Evoluir()
     {
-        evoluida = true;
-        carta = nomeEvolucao;
-        dano += 10;
-        defesa += 10;
-        return InstanciarCartaEvoluida(); // Agora retorna a nova carta evoluída
+        if (!evoluida)
+        {
+            evoluida = true;
+            carta = nomeEvolucao;
+            dano += 10;
+            defesa += 10;
+        }
     }
-    return null; // Retorna null se a carta já foi evoluída
-}
-
-// Instancia o prefab da carta evoluída
-private GameObject InstanciarCartaEvoluida()
-{
-    if (cartaEvolutivaPrefab != null)
-    {
-        Vector3 posicaoAtual = transform.position;
-        Quaternion rotacaoAtual = transform.rotation;
-
-        // Instancia o novo prefab da carta evoluída
-        GameObject cartaEvoluida = Instantiate(cartaEvolutivaPrefab, posicaoAtual, rotacaoAtual);
-
-        // Atualiza as propriedades da nova carta evoluída
-        Carta novaCarta = cartaEvoluida.GetComponent<Carta>();
-        novaCarta.dano = this.dano;
-        novaCarta.defesa = this.defesa;
-        novaCarta.ativa = true;
-
-        // Destroi a carta original
-        Destroy(gameObject);
-
-        return cartaEvoluida; // Retorna a nova carta evoluída
-    }
-    else
-    {
-        Debug.LogError("Prefab da carta evoluída não está atribuído.");
-    }
-    return null; // Retorna null se não houver prefab
-}
-
 }

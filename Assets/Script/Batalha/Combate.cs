@@ -95,101 +95,50 @@ public class Combate : MonoBehaviour
     }
 
     public void FinalizarTurno()
-{
-    StopCoroutine(ContadorTurno());
-
-    // Verifica se a carta ativa do jogador ainda está válida
-    if (cartaAtivaPlayer != null)
     {
-        Carta cartaAtual = cartaAtivaPlayer.GetComponent<Carta>();
+        StopCoroutine(ContadorTurno());
 
-        // Verifica se a carta pode ser evoluída
-        if (cartaAtual != null)
+        if (vez == 1)
         {
-            GameObject novaCartaEvoluida = cartaAtual.Evoluir(); // Chama o método Evoluir
-            if (novaCartaEvoluida != null)
+            vez++;
+            VerificaCartaAtivaPlayer();
+            if (cartaAtivaPlayer != null)
             {
-                // Atualiza a referência da carta ativa para a nova carta evoluída
-                AtualizarCartaAtiva(novaCartaEvoluida.GetComponent<Carta>());
-                Debug.Log("Carta evoluída com sucesso.");
-            }
-            else
-            {
-                Debug.Log("Carta já evoluída, mantendo a carta atual.");
+                MudaPosicaoCartaPlayer();
             }
         }
-    }
-
-    if (vez == 1)
-    {
-        vez++;
-        VerificaCartaAtivaPlayer();
-        if (cartaAtivaPlayer != null)
+        else if (vez == 2)
         {
-            MudaPosicaoCartaPlayer();
-        }
-    }
-    else if (vez == 2)
-    {
-        vez++;
-        cartaOponenteSelecionada = false;
-        if (cartaAtivaOponente == null)
-        {
-            cartaAtivaOponente = EscolherCartaAleatoria(oponente);
-            if (cartaAtivaOponente != null)
+            vez++;
+            cartaOponenteSelecionada = false;
+            if (cartaAtivaOponente == null)
             {
-                cartaOponenteSelecionada = true;
-                MudaPosicaoCartaOponente();
-                StartCoroutine(ContadorTurno());
-            }
-            else
-            {
-                textoIndicador.text = "Nenhuma carta disponível para o oponente.";
-                AtualizaTextoBotao("Inicie o próximo turno");
-                aguardaVez = false;
-                cartaOponenteSelecionada = true;
+                cartaAtivaOponente = EscolherCartaAleatoria(oponente);
+                if (cartaAtivaOponente != null)
+                {
+                    cartaOponenteSelecionada = true;
+                    MudaPosicaoCartaOponente();
+                    StartCoroutine(ContadorTurno());
+                }
+                else
+                {
+                    textoIndicador.text = "Nenhuma carta disponível para o oponente.";
+                    AtualizaTextoBotao("Inicie o próximo turno");
+                    aguardaVez = false;
+                    cartaOponenteSelecionada = true;
+                }
             }
         }
+        else if (vez == 3)
+        {
+            vez = 1;
+            FinalizaCombate();
+            FimdoTurno();
+        }
+
+        aguardaVez = true;
+        AtualizaTextoBotao("Inicie o Turno");
     }
-    else if (vez == 3)
-    {
-        vez = 1;
-        FinalizaCombate();
-        FimdoTurno();
-    }
-
-    aguardaVez = true;
-    AtualizaTextoBotao("Inicie o Turno");
-}
-
-
-
-
-    private void AtualizarCartaAtiva(Carta novaCarta)
-{
-    // Verifica se a nova carta é válida
-    if (novaCarta != null)
-    {
-        // Atualiza a referência da carta ativa do jogador para a nova carta evoluída
-        cartaAtivaPlayer = novaCarta.gameObject;
-
-        // Reposiciona a carta no local correto
-        MudaPosicaoCartaPlayer();
-
-        // Atualiza quaisquer componentes visuais ou outras propriedades específicas da carta evoluída
-        //AtualizarComponentesVisuais(novaCarta);
-
-        // Log para depuração
-        Debug.Log($"Carta atualizada para: {novaCarta.NomeCarta()} após evolução.");
-    }
-    else
-    {
-        Debug.LogWarning("Tentativa de atualizar uma carta inválida.");
-    }
-}
-
-
-
 
         private void FinalizaCombate()
     {
@@ -351,18 +300,11 @@ public class Combate : MonoBehaviour
         }
     }
 
-    // Função auxiliar para atualizar componentes visuais após a evolução da carta
-    /*private void AtualizarComponentesVisuais(Carta novaCarta)
+    
+    private void AtualizarCartaAtiva(Carta novaCarta)
     {
-        // Exemplo de como atualizar o sprite da carta, caso necessário
-        SpriteRenderer spriteRenderer = novaCarta.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.sprite = novaCarta.spriteEvoluido; // Supondo que o sprite evoluído esteja configurado na carta
-        }
-
-        // Outras possíveis atualizações de componentes (animações, sons, etc.)
-        Debug.Log("Componentes visuais da carta foram atualizados após a evolução.");
-    }*/
+        cartaAtivaPlayer = novaCarta.gameObject;
+        Debug.Log($"Carta atualizada para: {novaCarta.NomeCarta()} após evolução.");
+    }
 
 }
