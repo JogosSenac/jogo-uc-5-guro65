@@ -212,12 +212,18 @@ public class Combate : MonoBehaviour
     private GameObject EscolherCartaAleatoria(Player jogador)
     {
         List<GameObject> deck = jogador.DeckNaTela();
-        if (deck != null && deck.Count > 0)
+        bool naoTemCarta = true;
+        do
         {
             int indiceAleatorio = Random.Range(0, deck.Count);
-            Debug.Log("Carta escolhida: " + deck[indiceAleatorio].name);
-            return deck[indiceAleatorio];
+            if (deck[indiceAleatorio] != null)
+            {
+                Debug.Log("Carta escolhida: " + deck[indiceAleatorio].name);
+                return deck[indiceAleatorio];
+            }
         }
+        while(naoTemCarta);
+        
         Debug.Log("Nenhuma carta disponível no deck.");
         return null;
     }
